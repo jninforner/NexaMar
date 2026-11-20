@@ -2,11 +2,11 @@
 
 TraçaMar és l’aplicació que fa servir el restaurant La Barca de Ca l’Ardet per seguir el peix des de la compra fins a la venda. S’obre al navegador i es pot afegir a la pantalla d’inici de l’iPhone o de l’iPad com una aplicació web progressiva (PWA).
 
-La versió del codi en aquest repositori és la **7.8**. L’aplicació del restaurant és a [TraçaMar a GitHub Pages](https://jninforner.github.io/control-de-peixos/).
+La versió del codi en aquest repositori és la **7.9**. L’aplicació del restaurant és a [TraçaMar a GitHub Pages](https://jninforner.github.io/control-de-peixos/).
 
 ## Què pots fer amb TraçaMar
 
-- **Registrar compres i partides.** Introdueix l’espècie, la preparació, els pesos, la quantitat i els costos. En una partida «A talls», tria si comptes talls o racions. La quantitat determina l’estoc, el cost per tall o ració i les etiquetes. També pots començar a partir d’una foto d’un albarà.
+- **Registrar compres i partides.** Introdueix l’espècie, la preparació, els pesos, la quantitat i els costos. En una partida «A talls», tria si comptes talls o racions. La quantitat determina l’estoc, el cost per tall o ració i les etiquetes. També pots importar un albarà en JPG, PNG, WebP o PDF. Revisa les línies detectades, inclosos els cefalòpodes, i fes servir «Dona d’alta al catàleg» per afegir-hi espècies o articles nous.
 - **Calcular la minva i els preus.** L’aplicació calcula la diferència entre el pes brut i el net, el cost per exemplar i un preu de venda orientatiu. Quan falta el pes net, pot suggerir-ne un a partir de partides anteriors.
 - **Consultar l’estoc i registrar vendes.** Els exemplars s’agrupen per partida. Pots desplegar-la per veure els peixos disponibles i indicar quin has venut.
 - **Imprimir etiquetes.** L’aplicació genera un PDF amb una etiqueta per exemplar de les partides seleccionades. Està pensat per a fulls A4 APLI 01272 de 24 etiquetes, de 70 × 35 mm. Pots començar en qualsevol posició del full i ajustar el marge superior i la separació entre files. L’etiqueta d’inventari mostra el cost real del peix. Des de Partides també pots imprimir el nombre d’etiquetes resum que necessitis, amb la data, el pes, la minva i els costos de la partida.
@@ -59,7 +59,7 @@ Si el port 8000 està ocupat, executa `python3 run dev --port 8001` i obre [http
 
 Python serveix els fitxers directament. El projecte no té cap pas de compilació ni paquets per instal·lar. Firebase gestiona l’inici de sessió amb correu i contrasenya i desa l’inventari a Firestore, al document `inventari/dades` del projecte `control-de-peixos`. El navegador necessita connexió per carregar el component de Firebase la primera vegada. Obrir la pàgina sense connexió i sincronitzar l’inventari són dues coses diferents.
 
-Quan demanes que s’interpreti una foto d’un albarà, TraçaMar l’envia a un servei de Cloudflare anomenat `tracamar-ia`, que la processa amb OpenAI. Aquesta funció necessita connexió i una sessió iniciada. Les dades d’una còpia antiga a HTML Viewer no es migren automàticament. Si encara la tens, conserva-la i exporta’n les dades.
+Quan demanes que s’interpreti un albarà, TraçaMar envia la imatge o el PDF al Worker de Cloudflare `tracamar-ia`, que analitza el fitxer amb OpenAI. Aquesta funció necessita connexió i una sessió iniciada. Les dades d’una còpia antiga a HTML Viewer no es migren automàticament. Si encara la tens, conserva-la i exporta’n les dades.
 
 ## Treballar amb el repositori
 
